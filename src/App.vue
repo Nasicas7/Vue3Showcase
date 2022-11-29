@@ -1,39 +1,48 @@
-<script setup lang="ts">
+<script setup>
 
-import { ref } from 'vue';
-import HomeViewVue from './views/HomeView.vue';
+import { ref, reactive } from 'vue';
+/*import HomeViewVue from './views/HomeView.vue';
 import AboutViewVue from './views/AboutView.vue';
 import ContactViewVue from './views/ContactView.vue';
-
-
+import AdminViewVue from './views/AdminView.vue';
 
 const home = ref(true);
 const contact = ref(false);
 const about = ref(false);
+const admin = ref(false);*/
 
-
-function displayHome() {
+/*function displayHome() {
   home.value = true
   contact.value = false
   about.value = false
+  admin.value = false
 }
 
 function displayContact() {
   home.value = false
   contact.value = true
   about.value = false
-  /*contact.value = !contact.value*/
+  admin.value = false
+  /*contact.value = !contact.value
 }
 
 function displayAbout() {
   home.value = false
   contact.value = false
   about.value = true
-  /* about.value = !about.value*/
+  admin.value = false
+  /* about.value = !about.value
 }
 
-function fetchTest() {
-  fetch('http://localhost:8080/messages')
+function displayAdmin() {
+  home.value = false
+  contact.value = false
+  about.value = false
+  admin.value = true
+}*/
+
+async function fetchTest() {
+  await fetch('http://localhost:8080/messages')
     .then(response => console.log(response.text()))
 }
 
@@ -43,19 +52,21 @@ function fetchTest() {
 
   <!-- Menu de navigation-->
   <header>
-    <div class="topnav">
-      <button class="btnMenu" @click="displayHome">Home</button> <!-- <a class="active" href="#home">Home</a>-->
-      <button class="btnMenu" @click="displayContact">Contact</button> <!-- <a href="#contact">Contact</a>-->
-      <button class="btnMenu" @click="displayAbout">About</button> <!-- <a href="#about">About</a> -->
-      <button class="btnMenu" @click="fetchTest">fetchTest</button>
-    </div>
+    <nav class="topnav">
+      <button class="btnMenu" @click="$router.push({ name: 'home' })">Home</button>
+      <button class="btnMenu" @click="$router.push({ name: 'contact' })">Contact</button>
+      <button class="btnMenu" @click="$router.push({ name: 'about' })">About</button>
+      <button class="btnMenu" @click="$router.push({ name: 'admin' })">Admin</button>
+      <button @click="fetchTest()">fetchTest</button>
+    </nav>
   </header>
 
- 
+  <router-view></router-view>
 
+<!-- 
   <HomeViewVue v-if="home" />
   <ContactViewVue v-if="contact" />
-  <AboutViewVue v-if="about" />
+  <AboutViewVue v-if="about" />-->
 
   <div class="separateur"></div>
 
