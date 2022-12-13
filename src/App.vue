@@ -58,6 +58,8 @@ async function fetchTest() {
       <button class="btnMenu" @click="$router.push({ name: 'about' })">About</button>
       <button class="btnMenu" @click="$router.push({ name: 'admin' })">Admin</button>
       <button @click="fetchTest()">fetchTest</button>
+      <button id="btnDeco" class="btnMenu">Déconnexion</button>
+
     </nav>
   </header>
 
@@ -163,6 +165,12 @@ div#content {
 
 .btnSearch {
   padding-left: 5%;
+}
+
+#btnDeco {
+position: absolute;
+top: 1%;
+left: 90%;
 }
 
 
