@@ -31,7 +31,6 @@ let string= "Rob";
     <div> <img src="bg.png"> </div>
     <div id="autre"> <img src="bg.png"> </div>
     <div class="separateur"></div>
-
   </div>
 
 
